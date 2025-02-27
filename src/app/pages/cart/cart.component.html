@@ -1,0 +1,36 @@
+@if(cartdatails.totalCartPrice){
+  <section class="bg-gray-50 p-2 w-[75%] rounded shadow mx-auto">
+    <h1 class="text-3xl text-center text-orange-500">Shop Cart</h1>
+    <span class=" text-orange-500 m-3 ">Total Carts Price : {{cartdatails.totalCartPrice}} EGP</span>
+
+        @for(cart of cartdatails.products; track $index){
+            <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-3 pb-2 border-b border-orange-200">
+
+        <div><img [src]="cart.product.imageCover"class="w-full h-[140px] object-contain"[alt]="cart.product.title"></div>
+        <div class="flex items-center justify-between">
+           <div>
+            <h3>{{cart.product.title}}</h3>
+            <h4>price : {{cart.price}} EGP</h4>
+            <button class="cursor-pointer"(click)="removeCart(cart.product.id)"><i class="fas fa-trash text-orange-500 pe-1"></i>remove</button>
+            </div>
+           <div>
+    <button class="cursor-pointer" (click)="UpdateCart(cart.product.id,cart.count+1)"><i class="text-orange-500 pe-2 fa-regular fa-square-plus"></i></button> 
+    <span>{{cart.count}}</span>  
+    <button class="cursor-pointer" (click)="UpdateCart(cart.product.id,cart.count-1)"><i class="text-orange-500 ps-2 fa-regular fa-square-minus"></i></button> 
+    </div>
+    </div>
+
+      </div>
+    }
+  <div>
+    <button class="btn-main m-3" (click)="ClearAllCarts()">Clear Your Cart </button> 
+    
+    <button class="btn-main m-3" [routerLink]="['/checkout',cartdatails._id]" >ChechOut </button>
+    <button class="btn-main m-3" [routerLink]="['/cash',cartdatails._id]" >Cash Payment</button>
+  </div>
+
+</section>
+}
+@else {
+  <h1 class="font-3xl text-orange-500">No Data Found </h1>
+}

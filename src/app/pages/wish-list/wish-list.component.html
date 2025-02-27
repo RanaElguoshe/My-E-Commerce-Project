@@ -1,0 +1,33 @@
+@if(wishListarray.count){
+    <section class="bg-gray-50 p-2 w-[75%] rounded shadow mx-auto">
+      <h1 class="text-3xl text-center text-orange-500">Wish List</h1>  
+          @for(list of wishListarray.data; track $index){
+        <div class="grid md:grid-cols-[20%_minmax(0,1fr)] my-3 pb-2 border-b border-orange-200">
+  
+          <div><img [src]="list.imageCover"class="w-full h-[140px] object-contain"[alt]="list.title"></div>
+<div class="flex items-center justify-between">
+    <div class="flex items-center justify-between">
+        <div>
+         <h3>{{list.title}}</h3>
+         <h4 class="text-orange-400">{{list.price}} EGP</h4>
+         <button class="cursor-pointer"(click)="removeWishList(list.id)"><i class="fas fa-trash text-orange-500 pe-1"></i>remove</button>
+
+         </div>
+        <div>
+ </div>
+ </div>
+ <div>
+   <button (click)="addToCart(list.id)" class="py-2 px-10 rounded border-2 text-gray-600 border-orange-300  ">add to cart</button>
+
+ </div>
+</div>
+  
+        </div>
+      }
+
+  
+  </section>
+  }
+  @else {
+    <h1 class="font-3xl text-orange-500">No Data Found </h1>
+  }

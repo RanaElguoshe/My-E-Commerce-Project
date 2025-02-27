@@ -1,0 +1,55 @@
+<section class="w-1/2 mx-auto py-3 rounded shadow  bg-gray-50 border-1 border-orange-100">
+    <h1 class="text-3xl text-center  text-orange-500 font-light">
+        Cash Payment
+    </h1>
+    <form [formGroup]="cashForm" (ngSubmit)="sendDetails()">
+    <div class="mb-1 px-3">
+        <label for="details" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">details : </label>
+        <textarea formControlName="details"id="details" class="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" required ></textarea>
+   @if(cashForm.get('details')?.errors && cashForm.get('details')?.touched){
+<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    </svg>
+    <div>
+        <ul class="mt-1.5 list-disc list-inside">
+        <li>Details is required</li>
+      </ul>
+    </div>
+  </div>
+   }  
+      </div>
+
+      <div class="mb-1 px-3">
+        <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">phone : </label>
+        <input type="text"formControlName="phone"id="phone" class="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" required >
+   @if(cashForm.get('phone')?.errors && cashForm.get('phone')?.touched){
+<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    </svg>
+    <div>
+        <ul class="mt-1.5 list-disc list-inside">
+        <li>Phone is required</li>
+      </ul>
+    </div>
+  </div>
+   }  
+      </div>
+      <div class="mb-1 px-3">
+        <label for="city" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">City : </label>
+        <input type="text" formControlName="city"id="city" class="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" required >
+   @if(cashForm.get('city')?.errors && cashForm.get('city')?.touched){
+<div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+    <svg class="shrink-0 inline w-4 h-4 me-3 mt-[2px]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+    </svg>
+    <div>
+        <ul class="mt-1.5 list-disc list-inside">
+        <li>City is required</li>
+      </ul>
+    </div>
+  </div>
+   }  
+      </div>
+      <button class="btn-main m-3"type="submit"[disabled]="cashForm.invalid" >Online Payment </button>
+
+    </form>
+</section>

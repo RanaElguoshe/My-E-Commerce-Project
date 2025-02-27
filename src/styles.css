@@ -1,0 +1,43 @@
+@import "tailwindcss";
+@source "../node_modules/flowbite";
+@import 'ngx-toastr/toastr';
+
+
+:root {
+    --main-color: #f35a13;
+    --light-color: #f0f3f2;
+    --shadow: rgba(145, 158, 171, 0.2) 0px 2px 4px -1px,
+      rgba(145, 158, 171, 0.14) 0px 4px 5px 0px,
+      rgba(145, 158, 171, 0.12) 0px 1px 10px 0px;
+    --font-family: "Encode Sans Expanded", sans-serif;
+    --rating-color: #ffc908;
+  }
+  .rol{
+    cursor: pointer;
+  }
+ .btn-main {
+    background-color:var(--main-color);
+    padding: 7px 20px;
+    border: 1px solid #e0d9d9;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    
+    transition: background-color 0.5s;
+
+  }
+  .btn-forms{
+    @apply
+      bg-orange-600  text-white border rounded px-10 py-2 hover:bg-amber-700 transition-colors duration-500
+    
+  }
+  
+  .btn-main:hover {
+    background-color: #bb3e04;
+  }
+  .sectionForm{
+    @apply
+    w-1/2 mx-auto py-3 rounded shadow  bg-gray-50 border-1 border-orange-100
+  }
+
+  

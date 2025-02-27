@@ -1,0 +1,11 @@
+<section>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 ">
+            @for(brand of  Allbrands; track $index){
+                <div class=" border-orange-100 border-1 p-3 text-center  shadow-2xl rounded">
+                    <img [src]="brand.image" class="mb-3 w-full h-[250px]">
+                    <h2 class="text-orange-400 text-2xl">{{brand.name}}</h2>
+                </div>
+            }
+            </div>
+      
+    </section>

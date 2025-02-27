@@ -1,0 +1,9 @@
+.card {
+    transform: translateY(100%);
+    opacity: 0;
+    transition: all .7s;
+    }
+    .cardHover:hover .card{
+        transform: translateY(0);
+        opacity: 1;
+    }

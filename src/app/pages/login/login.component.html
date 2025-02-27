@@ -1,0 +1,63 @@
+<section class="sectionForm">
+    <h1 class="text-3xl text-center  text-orange-500 font-light">
+        Register Now
+    </h1>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+    
+          <div class="mb-1 px-3">
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Email: </label>
+            <input formControlName="email" type="email" id="email" class="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" required />
+               @if(loginForm.get('email')?.errors && loginForm.get('email')?.touched){
+
+    <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <div>
+            <ul class="mt-1.5 list-disc list-inside">
+                @if(loginForm.get('email')?.getError('required')){
+                    <li>At least 10 characters (and up to 100 characters)</li>
+                }
+                @else if(loginForm.get('email')?.getError('email')){
+                    <li>you must enter a vail email</li>
+                }
+          </ul>
+        </div>
+      </div>
+}
+        </div>
+          <div class="mb-1 px-3">
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password : </label>
+            <input formControlName="password" type="password" id="password" class="shadow-xs bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-xs-light" required />
+        @if(loginForm.get('password')?.errors && loginForm.get('password')?.touched){
+            <div class="flex p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+                <span class="sr-only">Danger</span>
+                <div>
+                    <ul class="mt-1.5 list-disc list-inside">
+        @if(loginForm.get('password')?.getError('required')){
+       <li>password is required</li>
+        }
+        @else if(loginForm.get('password')?.getError('pattern')){
+            <li>you must enter a valid password</li>
+             }
+                  </ul>
+                </div>
+              </div>
+        }
+          
+        </div>
+      
+ <div class="flex items-center justify-end gap-2 p-2 ">
+  <a routerLink="/forgot" class=" font-2xl text-blue-500 hover:underline p-2">Forgot Password</a>
+  <button [disabled]="isloading" type="submit"class="btn-forms">Sign Up
+    @if(isloading){
+      <span><i class="fas fa-spin fa-spinner"></i></span>
+    }
+  </button>
+ </div>
+          @if(errMessage){
+            <p class="bg-red-500 text-white text-2xl py-2 px-4">{{errMessage}}</p>
+          }
+          @if(success){
+            <p class="bg-blue-500 text-white text-2xl py-2 px-4">{{success}}</p>
+
+          }
+    </form>
+</section>

@@ -1,0 +1,70 @@
+<section class="grid md:grid-cols-[70%_minmax(0,1fr)]">
+<div>
+    <owl-carousel-o [options]="customOptions1">
+        <ng-template carouselSlide><img src="images/slide4.avif"class="w-full h-[300px]"></ng-template>  
+        <ng-template carouselSlide><img src="images/slider-image-2.jpeg" class="w-full h-[300px]"></ng-template>  
+        <ng-template carouselSlide><img src="images/slide3.gif" class="w-full h-[300px]"></ng-template> 
+        <ng-template carouselSlide><img src="images/slider-image-3.jpeg"class="w-full h-[300px]"></ng-template>  
+      </owl-carousel-o>
+</div>
+
+<div>
+    <img src="images/slider-2.jpeg" class="w-full h-[150px]">
+    <img src="images/slide2.avif" class="w-full h-[150px]">
+</div>
+
+</section>
+<section>
+<owl-carousel-o [options]="customOptions">
+
+ @for(cat of categories; track cat._id){
+    <ng-template carouselSlide>
+        <img [src]="cat.image"  class="w-full h-[250px]">
+        <h3 class="text-orange-500">{{cat.name}}</h3>
+      </ng-template>
+
+ }
+   
+</owl-carousel-o> 
+</section>
+<section>
+    <h2 class="text-4xl pb-4">Popular Product</h2>
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 ">
+@for(product of products;track $index){
+    <div class="border-orange-100  border shadow rounded py-3 card overflow-hidden">
+ <div [routerLink]="['/details', product._id]">
+    <div>
+        <img [src]="product.imageCover"[alt]="product.title" class="w-full">
+    </div>
+    <div class="ps-5">
+        <h4 class="text-orange-500">{{product.category.name}}</h4>
+        <h3>{{product.title.split(' ',3).join(' ')}}</h3>
+        <div class="flex justify-between">
+            <span>{{product.price}} EGP</span>
+            <div class="flex items-center pe-3">
+                <i class="fas fa-star text-green-500"></i>
+                <span class="text-gray-500">{{product.ratingsAverage}}</span>
+                
+            </div>
+
+        </div>
+        <div class=""> 
+        </div>
+        <!-- @for(ar of arr; track $index){ -->
+            @if(product._id==myId){
+                <button (click)="[gettingWishList(product._id),changeColor() ]" [style.color]="color"><i class="fa-solid fa-heart text-2xl p-2"></i></button>
+            }
+            @else {
+                <button (click)="[gettingWishList(product._id)]" ><i class="fa-solid fa-heart text-2xl p-2"></i></button>
+    
+            }
+        <!-- } -->
+
+    </div>
+ </div>
+    <button (click)="addToCart(product.id)" class="bg-orange-400 hov  text-white py-2 px-8  w-[90%] rounded block mx-auto">add to cart</button>
+</div>
+
+}
+    </div>
+</section>

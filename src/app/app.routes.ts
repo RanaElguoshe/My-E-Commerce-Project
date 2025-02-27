@@ -17,6 +17,7 @@ import { CartComponent } from './pages/cart/cart.component';
 import { Component } from '@angular/core';
 import { WishListComponent } from './pages/wish-list/wish-list.component';
 import { CashComponent } from './pages/cash/cash.component';
+import { DetailsComponent } from './pages/details/details.component';
 export const routes: Routes = [
  
 
@@ -25,13 +26,12 @@ export const routes: Routes = [
   {path:'register',component:RegisterComponent,title:"register"},
   {path:'login',component:LoginComponent,title:"login"},
   {path:'forgot',component:ForgotpasswordComponent,title:"fordot"},
-
-
 ]
 },
   {path:'',component:BlankLayoutComponent,canActivate:[authGuard],children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:'home',component:HomeComponent,title:"home"},
+    {path:'details/:id',component:DetailsComponent,title:"detail"},
     {path:'products',component:ProductsComponent,title:"product"},
     {path:'cart',component:CartComponent,title:"cart"},
     {path:'brands',component:BrandsComponent,title:"brands"},
@@ -42,7 +42,8 @@ export const routes: Routes = [
 
   ] 
 },
-   
+ { path: '**', component:NotfoundComponent, title: 'Page Not Found' }
+ 
 ];
 
 

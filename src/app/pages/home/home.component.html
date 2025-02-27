@@ -48,20 +48,23 @@
             </div>
 
         </div>
-        <div class=""> 
-        </div>
+    </div>
+ 
         <!-- @for(ar of arr; track $index){ -->
-            @if(product._id==myId){
-                <button (click)="[gettingWishList(product._id),changeColor() ]" [style.color]="color"><i class="fa-solid fa-heart text-2xl p-2"></i></button>
-            }
-            @else {
-                <button (click)="[gettingWishList(product._id)]" ><i class="fa-solid fa-heart text-2xl p-2"></i></button>
-    
-            }
+  
         <!-- } -->
 
-    </div>
+  
  </div>
+ <div class=""> 
+    @if(product._id==myId){
+        <button (click)="[gettingWishList(product._id),changeColor() ]" [style.color]="color"><i class="fa-solid fa-heart text-2xl p-2"></i></button>
+    }
+    @else {
+        <button (click)="[gettingWishList(product._id)]" ><i class="fa-solid fa-heart text-2xl p-2"></i></button>
+
+    }
+</div>
     <button (click)="addToCart(product.id)" class="bg-orange-400 hov  text-white py-2 px-8  w-[90%] rounded block mx-auto">add to cart</button>
 </div>
 
